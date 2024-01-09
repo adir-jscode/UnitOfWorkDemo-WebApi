@@ -11,12 +11,14 @@ namespace UnitOfWorkDemo.Infrastructure.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private ApplicationDbContext _context;
-        public UnitOfWork(ApplicationDbContext context)
+        public IProductRepository Products { get; }
+        public UnitOfWork(ApplicationDbContext context, IProductRepository productRepository)
         {
             
             _context = context;
+            Products = productRepository;
         }
-        public IProductRepository Products { get; }
+       
 
         public void Dispose()
         {

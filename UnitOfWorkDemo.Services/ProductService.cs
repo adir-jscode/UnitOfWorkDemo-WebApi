@@ -78,10 +78,10 @@ namespace UnitOfWorkDemo.Services
                 var product = await _unitOfWork.Products.GetById(productDetails.Id);
                 if (product != null)
                 {
-                    product.ProductName = productDetails.ProductName;
-                    product.ProductDescription = productDetails.ProductDescription;
-                    product.ProductPrice = productDetails.ProductPrice;
-                    product.ProductStock = productDetails.ProductStock;
+                    product.Name = productDetails.Name;
+                    product.Description = productDetails.Description;
+                    product.Price = productDetails.Price;
+                    product.Stock = productDetails.Stock;
 
                     _unitOfWork.Products.Update(product);
 

@@ -3,6 +3,8 @@ using UnitOfWorkDemo.Core.Interfaces;
 using UnitOfWorkDemo.Infrastructure.Context;
 using UnitOfWorkDemo.Infrastructure.Repositories;
 using UnitOfWorkDemo.Infrastructure.ServiceExtension;
+using UnitOfWorkDemo.Services;
+using UnitOfWorkDemo.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
